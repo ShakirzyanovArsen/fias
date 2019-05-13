@@ -4,19 +4,19 @@ services:
   download_rar:
     build: .
     volumes:
-      - ./fias_data:/data
+      - ./fias_files:/data
     command: ["./app", "-download", "/data"]
   unarchive_rar:
     build: .
     volumes:
-      - ./fias_data:/data
+      - ./fias_files:/data
     command: ["./app", "-unarchive", "/data/fias.rar", "/data/fias"]
   import:
     build: .
     depends_on:
       - db
     volumes:
-      - ./fias_data:/data
+      - ./fias_files:/data
     command: ["./app", "-import", "/data/fias/"]
   db:
     image: postgres:11
